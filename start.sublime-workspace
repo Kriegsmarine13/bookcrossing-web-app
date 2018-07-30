@@ -20,30 +20,38 @@
 	"buffers":
 	[
 		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 340,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "nodelearn.js",
 			"settings":
 			{
-				"buffer_size": 1445,
+				"buffer_size": 1539,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "var http = require('http');\nvar url = require('url');\nvar fs = require('fs');\nvar db = require('../config/db.js');\nvar s = require('../core/system.js');\nvar http = require('http');\n\nexports.Router = function(route, res){\n\t// var module = require('../modules/')\n\tconsole.log(route);\n\tvar filename = \"./html/\" + route.pathname+\".html\"\n\tfs.readFile(filename, function(err,data){\n\t\tif(err){\n\t\t\tres.writeHead(404,{'Content-Type': 'text/html'});\n\t\t\treturn res.end(\"404 Not Found\");\n\t\t}\n\t\tres.writeHead(200,{'Content-Type': 'text/html'});\n\t\tres.write(data);\n\t\treturn res.end();\n\t});\n}",
 			"file": "api/api.js",
-			"file_size": 495,
-			"file_write_time": 131766831265706660,
 			"settings":
 			{
-				"buffer_size": 577,
+				"buffer_size": 1897,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 600,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "pug/test.pug",
+			"settings":
+			{
+				"buffer_size": 48,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -57,13 +65,11 @@
 			}
 		},
 		{
-			"contents": "var url = require('url');\n\nexports.getRoute = function(req){\n\turl.parse()\n}",
 			"file": "core/system.js",
-			"file_size": 0,
-			"file_write_time": 131766822735101172,
 			"settings":
 			{
-				"buffer_size": 75,
+				"buffer_size": 360,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -71,16 +77,8 @@
 			"file": "config/db.js",
 			"settings":
 			{
-				"buffer_size": 1917,
+				"buffer_size": 1947,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "html/index.html",
-			"settings":
-			{
-				"buffer_size": 128,
 				"line_ending": "Windows"
 			}
 		}
@@ -93,9 +91,13 @@
 	"command_palette":
 	{
 		"height": 173.0,
-		"last_filter": "Package Control: Inst",
+		"last_filter": "Package Control: inst",
 		"selected_items":
 		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: Inst",
 				"Package Control: Install Package"
@@ -109,7 +111,7 @@
 				"Package Control: Advanced Install Package"
 			]
 		],
-		"width": 587.0
+		"width": 609.0
 	},
 	"console":
 	{
@@ -129,12 +131,13 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/drums/Documents/nodejs",
-		"/C/Users/drums/Documents/nodejs/models"
+		"/C/Users/drums/Documents/bookcrossing app/bookcrossing-web-app/bookcrossing-web-app"
 	],
 	"file_history":
 	[
+		"/C/Users/drums/Documents/bookcrossing app/bookcrossing-web-app/bookcrossing-web-app/package.json",
 		"/C/Users/drums/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
+		"/C/Users/drums/Documents/bookcrossing app/bookcrossing-web-app/bookcrossing-web-app/.gitignore",
 		"/C/Users/drums/Documents/nodejs/start.sublime-project",
 		"/C/Users/drums/Documents/mean/todoapp/todoapp-angular/src/styles.scss",
 		"/C/Users/drums/Documents/mean/todoapp/todoapp-angular/src/app/todoapp.sublime-project",
@@ -179,54 +182,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 340,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								194,
-								194
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "nodelearn.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1445,
+						"buffer_size": 1539,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								438,
-								438
+								482,
+								482
 							]
 						],
 						"settings":
@@ -235,27 +208,57 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 93.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "api/api.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 577,
+						"buffer_size": 1897,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								281,
-								281
+								1445,
+								1445
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								418,
+								418
 							]
 						],
 						"settings":
@@ -267,11 +270,39 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "pug/test.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 48,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19,
+								19
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Pug/Syntaxes/Pug.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "models/books.js",
 					"semi_transient": false,
 					"settings":
@@ -296,24 +327,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "core/system.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 75,
+						"buffer_size": 360,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								72,
-								72
+								83,
+								83
 							]
 						],
 						"settings":
@@ -328,12 +359,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "config/db.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1917,
+						"buffer_size": 1947,
 						"regions":
 						{
 						},
@@ -348,34 +379,6 @@
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "html/index.html",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -66,13 +66,21 @@ exports.selectQuery = function(columns,table,cond){
 exports.insertQuery = function(table,dataArray){
 	con.connect(function(err){
 		console.log('Connected!');
+		console.log('dataArray is '+dataArray);
 		// var valuesString = "";
-		var sql = "INSERT INTO "+table+" VALUES ("+dataArray.join(',')+")";
+		// var data = Array.prototype.slice.call(dataArray);
+		// console.log('test '+data);
+		var queryString = dataArray.join('\',\'');
+		var sql = "INSERT INTO "+table+" VALUES ('"+queryString+"')";
 		console.log("Query: "+sql);
-		con.query(sql,function(err_insert,result){
-			if(err_insert) throw err_insert;
-			console.log('1 row inserted!');
-		});
+		if(dataArray){
+			con.query(sql,function(err_insert,result){
+				if(err_insert) throw err_insert;
+				console.log('1 row inserted!');
+			});
+		} else {
+			console.log('Insert failed!');
+		}
 	});
 }
 
