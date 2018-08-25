@@ -50,5 +50,13 @@ exports.validateFormData = function(req){
 }
 
 exports.getPostData = function(req){
-	console.log(req.body);
+	var data = Object.keys(req).map(key => req[key]);
+	data.unshift(0); //для генерации id (можно сделать флаг функции для автоподставления)
+	data.push(1); //ставим книгу активной после добавления
+	// console.log(data);
+	if(data) {
+		console.log(data);
+		db.insertQuery('pen_books_addresses', data);
+		console.log('=====getPostData finised successfully!=====')
+	}
 }

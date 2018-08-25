@@ -6,15 +6,21 @@ block title
 block content
 	div.container
 		div(class="col-4 float-right")
-			form(class="", action="/add", method="POST")
+			form(class="add-book", id="add-book")
 				label(class="control-label", for="bookTitle") Название книги
 				input(class="form-control", type="text", name="book_title", id="bookTitle")
+				label(class="control-label", for="bookAuthor") Автор книги
+				input(class="form-control", type="text", name="book_author", id="bookAuthor")
 				label(class="control-label", for="city") Город
 				input(class="form-control", type="text", name="city", id="city")
 				label(class="control-label", for="street") Улица
 				input(class="form-control", type="text", name="street", id="street")
 				label(class="control-label", for="house") Дом
 				input(class="form-control", type="text", name="house", id="house")
+				//- label(class="control-label", for="coords-x") Координаты X
+				input(class="form-control", type="hidden", name="coords-x", id="coords-x")
+				//- label(class="control-label", for="coords-y") Координаты Y
+				input(class="form-control", type="hidden", name="coords-y", id="coords-y")
 				button('class btn btn-primary', type="submit") Добавить
-		div(class="col-8", id="map")
+		div(class="col-8 map-container", id="map")
 			//- script(type="text/javascript", charset="utf-8", async, src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae4b906d8090e4df982711ef63a795e1c05b504fc16cb44db19d3656cf79eacdf&amp;lang=ru_RU&amp;scroll=true;height:75%;")

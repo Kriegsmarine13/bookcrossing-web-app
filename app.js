@@ -57,27 +57,13 @@ app.route('/add')
 
 	res.render('block_add',data);
 })
-// .get(function(req,res,next){
-// 	s.getConnectionIp(req);
-
-// })
 .post(function(req,res,next){
 	res.send('POST DATA SENT!');
 	console.log('post request on /add');
-	s.getPostData(req);
-	// s.handleFormData(req);
-})
-
-// app.get('/add', function(req,res){
-// 	s.getConnectionIp(req);
-
-// 	var data = {
-// 		page: '/add'
-// 	};
-
-// 	res.render('block_add', data);
-// });
+	// console.log(req.body);
+	s.getPostData(req.body);
+});
 
 app.listen(8080,function(){
 	console.log('Listening on port 8080');
-})
+});
