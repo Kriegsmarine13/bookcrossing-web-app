@@ -14,13 +14,9 @@ app.set('views',__dirname+'/pug/blocks');
 app.use('/css',express.static(__dirname+'/css'));
 app.use('/js',express.static(__dirname+'/js'));
 app.use('/uploads',express.static(__dirname+'/uploads'));
-// parse application/json
-app.use(bodyParser.json());
-//parse application/xwww-form-urlencoded
-app.use(bodyParser.urlencoded({extended: true}));
-///parse multipart/form-data
-app.use(upload.array());
 app.use(express.static('public'));
+
+//Routes
 
 app.get('/test', function(req,res){
 	console.log("test path");
@@ -60,9 +56,18 @@ app.route('/add')
 .post(function(req,res,next){
 	res.send('POST DATA SENT!');
 	console.log('post request on /add');
-	// console.log(req.body);
 	s.getPostData(req.body);
 });
+
+app.route('/getPlacemarks')
+.get(function(req,res,next){
+	var books = require('./models/books.js');
+	var placemarks = books.getPlacemarks(function(err,data){
+		res.send(data);
+	});
+})
+
+//Создание сервера
 
 app.listen(8080,function(){
 	console.log('Listening on port 8080');

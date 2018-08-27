@@ -7,6 +7,11 @@ function init() {
             zoom: 9
         }, {
             searchControlProvider: 'yandex#search'
+        }),
+        myGeoObject = new ymaps.GeoObject({
+            geometry: {
+                type: "Point"
+            }
         });
 
     // Слушаем клик на карте.
@@ -29,6 +34,22 @@ function init() {
         }
         getAddress(coords);
     });
+
+    $.get('/getPlacemarks', function(res){
+            res.forEach(function(element){
+                var coords = [];
+                coords[0] = element['coords-x'];
+                coords[1] = element['coords-y'];
+                myMap.geoObjects
+                .add(myGeoObject)
+                .add(new ymaps.Placemark(coords,{
+                    balloonContent: element['book']
+                }, {
+                    preset: 'islands#dotIcon',
+                    iconColor: '#735184'
+                }));
+        });
+    })
 
     // Создание метки.
     function createPlacemark(coords) {

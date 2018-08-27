@@ -8,10 +8,11 @@ var con = mysql.createConnection({
 	database: "test"
 });
 
-// con.connect(function(err){
-// 	if(err) throw err;
-// 	console.log("connected");
-// })
+con.connect(function(err){
+	console.log("Connected!");
+	if(err) throw err;
+});
+
 
 exports.createDatabase = function(name){
 	console.log('=====createDatabase=====');
@@ -58,7 +59,7 @@ exports.createTable = function(name,columns,primary_key,keys){
 	});
 }
 
-exports.selectQuery = function(columns,table,cond){
+exports.selectQuery = function(columns,table,cond,callback){
 	console.log('=====selectQuery=====');
 	if(columns == null || columns == undefined){
 		columns = '*';
@@ -66,18 +67,17 @@ exports.selectQuery = function(columns,table,cond){
 	if(cond == null || cond == undefined){
 		cond = '1';
 	}
-	con.connect(function(err){
-		if(err) throw err;
-		console.log("Connected!");
-		con.query("SELECT "+columns+" FROM "+table+" WHERE "+cond,function(err_select, result){
-			if(err_select){
-				console.log('=====Exiting selectQuery with error=====');
-				throw err_select;
-			}
-			console.log('Query completed!');
-			console.log(result);
-			console.log('=====Finishing Successfully selectQuery=====');
-		});
+
+	console.log("Connected!");
+	con.query("SELECT "+columns+" FROM "+table+" WHERE "+cond,function(err_select, result){
+		if(err_select){
+			console.log('=====Exiting selectQuery with error=====');
+			callback(err_select,null);
+			throw err_select;
+		}
+		console.log('Query completed!');
+		callback(null,result);
+		console.log('=====Finishing Successfully selectQuery=====');
 	});
 }
 
@@ -86,9 +86,6 @@ exports.insertQuery = function(table,dataArray){
 	con.connect(function(err){
 		console.log('Connected!');
 		console.log('dataArray is '+dataArray);
-		// var valuesString = "";
-		// var data = Array.prototype.slice.call(dataArray);
-		// console.log('test '+data);
 		var queryString = dataArray.join('\',\'');
 		var sql = "INSERT INTO "+table+" VALUES ('"+queryString+"')";
 		console.log("Query: "+sql);

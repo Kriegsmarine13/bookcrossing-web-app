@@ -26,14 +26,3 @@ $(document).ready(function(){
 		});
 	});
 });
-
-// $(function() {
-// 	$('#add-book').submit(function(event) {
-// 		event.preventDefault();
-// 		var data;
-
-// 		$.post('/add', data, function(resp) {
-
-// 		});
-// 	});
-// });
