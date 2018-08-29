@@ -4,7 +4,8 @@ function init() {
     var myPlacemark,
         myMap = new ymaps.Map('map', {
             center: [55.753994, 37.622093],
-            zoom: 9
+            zoom: 9,
+            behaviors: ['default', 'scrollZoom']
         }, {
             searchControlProvider: 'yandex#search'
         }),
@@ -36,20 +37,33 @@ function init() {
     });
 
     $.get('/getPlacemarks', function(res){
-            res.forEach(function(element){
-                var coords = [];
-                coords[0] = element['coords-x'];
-                coords[1] = element['coords-y'];
-                myMap.geoObjects
-                .add(myGeoObject)
-                .add(new ymaps.Placemark(coords,{
-                    balloonContent: element['book']
-                }, {
-                    preset: 'islands#dotIcon',
-                    iconColor: '#735184'
-                }));
+        console.log(res);
+        clusterer = new ymaps.Clusterer({
+            preset: 'islands#invertedVioletClusterIcons',
+            groupByCoordinates: false,
+            clusterDisableClickZoom: true,
+            clusterHideIconOnBalloonOpen: false
         });
-    })
+        var geoObjects = [];
+        res.forEach(function(element){
+            var coords = [];
+            coords[0] = element['coords-x'];
+            coords[1] = element['coords-y'];
+            var pm = new ymaps.Placemark(coords,{
+                // balloonContent: element['book'],
+                balloonContentHeader: element['book']+(', '+element['author']?element['author']:''),
+                balloonContentBody: 'добавим ещё кастомное описание<br>'+
+                    '<button type="submit" class="btn btn-primary book-taken" data-id="'+element['id']+'">Забрал</button>',
+                balloonContentFooter: element['city']+','+element['street']+','+element['house'],
+                clusterCaption: element['book']
+            }, {
+                preset: 'islands#violetIcon'
+            });
+            geoObjects.push(pm);
+        });
+        clusterer.add(geoObjects);
+        myMap.geoObjects.add(clusterer);
+    });
 
     // Создание метки.
     function createPlacemark(coords) {

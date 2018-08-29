@@ -25,4 +25,17 @@ $(document).ready(function(){
 			console.log('Data sent!');
 		});
 	});
+})
+.on('click','.book-taken', function(){
+	var id = $(this).attr('data-id');
+	var jsonData = {
+		'id': id,
+		'queryData': {
+			'available': 0,
+		}
+	};
+	console.log(jsonData);
+	$.post('/bookTaken', jsonData, function(resp){
+		console.log('Book taken!');
+	})
 });

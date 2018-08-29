@@ -5,8 +5,6 @@ var pug = require('pug');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer();
 
 app.set('view engine','pug');
 app.set('views',__dirname+'/pug/blocks');
@@ -15,6 +13,8 @@ app.use('/css',express.static(__dirname+'/css'));
 app.use('/js',express.static(__dirname+'/js'));
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 //Routes
 
@@ -65,7 +65,17 @@ app.route('/getPlacemarks')
 	var placemarks = books.getPlacemarks(function(err,data){
 		res.send(data);
 	});
-})
+});
+
+app.route('/bookTaken')
+.post(function(req,res,next){
+	s.getConnectionIp(req);
+	console.log('=== /bookTaken ===');
+	console.log(req.body);
+	var books = require('./models/books.js');
+	var response = books.bookTaken(req.body);
+	res.end();
+});
 
 //Создание сервера
 

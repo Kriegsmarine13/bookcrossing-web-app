@@ -5,4 +5,10 @@ exports.getPlacemarks = function(callback){
 		console.log('FC getPlacemarks =====');
 		callback(null,res);
 	});
+};
+
+exports.bookTaken = function(data){
+	console.log('=====bookTaken=====');
+	console.log(data);
+	db.updateQuery('pen_books_addresses',data,'id = ' + data['id']);
 }

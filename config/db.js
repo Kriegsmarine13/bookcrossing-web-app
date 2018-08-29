@@ -104,3 +104,21 @@ exports.insertQuery = function(table,dataArray){
 	});
 }
 
+exports.updateQuery = function(table,dataArray,cond){
+	console.log('=====updateQuery=====');\
+	var queryData = dataArray['queryData'];
+	var queryString = 'UPDATE '+table+ ' SET ';
+	Object.keys(queryData).forEach(function(key, index){
+		queryString += key + ' = ' + queryData[key] + ' ';
+	});
+	queryString += 'WHERE ' + cond;
+	console.log(queryString);
+	con.query(queryString, function(err_update, result){
+		if(err_update){
+			console.log('=====Exiting updateQuery with error=====');
+			throw err_update;
+		}
+		console.log('1 row updated!');
+		console.log('=====Finishing Successfully updateQuery=====');
+	});
+}
