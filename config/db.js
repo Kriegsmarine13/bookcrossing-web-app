@@ -105,7 +105,7 @@ exports.insertQuery = function(table,dataArray){
 }
 
 exports.updateQuery = function(table,dataArray,cond){
-	console.log('=====updateQuery=====');\
+	console.log('=====updateQuery=====');
 	var queryData = dataArray['queryData'];
 	var queryString = 'UPDATE '+table+ ' SET ';
 	Object.keys(queryData).forEach(function(key, index){
